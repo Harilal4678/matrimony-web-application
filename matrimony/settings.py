@@ -19,7 +19,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-insecure-key")
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # Hosts allowed to serve the app
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = ['https://matrimony-web-application.onrender.com']
 
 # Application definition
 INSTALLED_APPS = [
