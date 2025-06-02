@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #f8d7da, #fce4ec);
+        font-family: 'Segoe UI', sans-serif;
+        color: #6c1e1e;
+    }
+
+    .payment-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #b30000;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .btn-premium {
+        display: inline-block;
+        padding: 15px 30px;
+        background: #b30000;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-radius: 50px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        text-decoration: none;
+        transition: background 0.3s ease, transform 0.2s ease;
+        margin-top: 20px;
+    }
+
+    .btn-premium:hover {
+        background: #8a0000;
+        transform: scale(1.05);
+    }
+
+    .payment-info {
+        margin-top: 30px;
+        background: #fff8e1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .payment-info p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+</style>
+
+<div class="payment-container">
+    <h1>💳 Payment Required</h1>
+    <p>To unlock premium features and access exclusive suggestions, please upgrade your account.</p>
+    <a href="{% url 'payment_page' %}" class="btn-premium">Upgrade to Premium</a>
+
+    <div class="payment-info">
+        <p><strong>Price:</strong> <strong>₹199</strong> </p>
+        <p><strong>Benefit:</strong> Unlock Partner Suggestions and more.</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to right, #fff8e1, #fff);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ffd700;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .profile-container h1 {
+        text-align: center;
+        color: #b30000;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        border-bottom: 2px dashed #ffcc00;
+        padding-bottom: 10px;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #ffd700;
+        margin: 0 auto 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-container p {
+        font-size: 1.1rem;
+        margin: 12px 0;
+        color: #333;
+    }
+
+    .profile-container strong {
+        color: #8a0000;
+        font-weight: 600;
+    }
+
+    .partner-pref {
+        margin-top: 40px;
+        background: #fffaf0;
+        padding: 20px;
+        border-radius: 15px;
+        border-left: 6px solid #ffd700;
+    }
+
+    .partner-pref h3 {
+        color: #b30000;
+        margin-bottom: 15px;
+    }
+
+    .profile-actions {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .profile-actions .btn {
+        padding: 12px 25px;
+        font-weight: bold;
+        border-radius: 30px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, background 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #b30000;
+        color: white;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: #ffcc00;
+        color: #333;
+        border: none;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="profile-container">
+    <h1>{{ user_profile.user.username }}'s Profile</h1>
+
+    <!-- Profile Image -->
+    {% if user_profile.profile_image %}
+        <img src="{{ user_profile.profile_image.url }}" alt="Profile Image" class="profile-image">
+    {% else %}
+        <img src="https://via.placeholder.com/150" alt="Profile Image" class="profile-image">
+    {% endif %}
+
+    <p><strong>Age:</strong> {{ user_profile.age }}</p>
+    <p><strong>Gender:</strong> {{ user_profile.gender }}</p>
+    <p><strong>Religion:</strong> {{ user_profile.religion }}</p>
+    <p><strong>Location:</strong> {{ user_profile.location }}</p>
+    <p><strong>Profession:</strong> {{ user_profile.profession }}</p>
+    <p><strong>Bio:</strong> {{ user_profile.bio }}</p>
+
+    {% if user_profile.partnerpreference %}
+    <div class="partner-pref">
+        <h3>💖 Partner Preferences</h3>
+        <p><strong>Preferred Religion:</strong> {{ user_profile.partnerpreference.preferred_religion|default:"Not specified" }}</p>
+        <p><strong>Preferred Location:</strong> {{ user_profile.partnerpreference.preferred_location|default:"Not specified" }}</p>
+        <p><strong>Preferred Profession:</strong> {{ user_profile.partnerpreference.preferred_profession|default:"Not specified" }}</p>
+        <p><strong>Preferred Age Range:</strong> {{ user_profile.partnerpreference.min_age|default:"?" }} - {{ user_profile.partnerpreference.max_age|default:"?" }}</p>
+    </div>
+    {% else %}
+        <p><em>No partner preferences set.</em></p>
+    {% endif %}
+
+    <div class="profile-actions">
+        <a href="{% url 'suggestions' %}" class="btn btn-primary">🔍 View Suggestions</a>
+        <a href="{% url 'search_profiles' %}" class="btn btn-secondary">🎯 Filter Again</a>
+    </div>
+</div>
+
+{% endblock %}

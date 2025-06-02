@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+    .setup-profile-container {
+        max-width: 700px;
+        margin: 50px auto;
+        background: #fffaf0;
+        padding: 40px;
+        border-radius: 15px;
+        border: 2px solid #ffd700;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        animation: slideIn 0.5s ease;
+    }
+
+    .setup-profile-container h2 {
+        text-align: center;
+        color: #b30000;
+        margin-bottom: 30px;
+    }
+
+    .btn-save {
+        background-color: #b30000;
+        color: #fff;
+        font-weight: bold;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .btn-save:hover {
+        background-color: #8a0000;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="setup-profile-container">
+    <h2>Set Up Your Profile</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-save">💾 Save & Continue</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

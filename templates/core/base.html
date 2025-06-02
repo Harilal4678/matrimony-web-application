@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Matrimonial Site</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff5f5;
+            margin: 0;
+            padding: 0;
+            color: #4b0000;
+        }
+        header {
+            background: linear-gradient(to right, #b30000, #ffcc00);
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            background-color: #ffe680;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            margin: 0 20px;
+            color: #b30000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            background-color: #ffcc00;
+            color: white;
+            transform: scale(1.05);
+        }
+        .welcome {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #fff0f0;
+            color: #800000;
+        }
+        hr {
+            border: 1px solid #ffcc00;
+        }
+        .content {
+            padding: 20px;
+        }
+        .btn-logout {
+            background-color: #b30000;
+            color: white;
+            padding: 12px 30px;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-logout:hover {
+            background-color: #8a0000;
+            transform: scale(1.05);
+        }
+        .btn-home {
+            background-color: #ffcc00;
+            color: #b30000;
+            padding: 12px 30px;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-home:hover {
+            background-color: #b30000;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💍 Welcome to TECHGEUM Matrimonial  💍</h1>
+    </header>
+
+    {% if user.is_authenticated %}
+    
+        <div class="welcome">
+            Welcome, {{ user.username }} |
+            <a href="{% url 'home' %}" class="btn-home">Home</a>
+            <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
+           
+        </div>
+    {% else %}
+        <nav>
+            <a href="{% url 'home' %}" class="btn-home">Home</a>
+            <a href="{% url 'login' %}" class="btn-home">Login</a>
+            <a href="{% url 'register' %}" class="btn-home">Register</a>
+        </nav>
+    {% endif %}
+
+    <hr>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

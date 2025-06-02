@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+    .payment-success-container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #fff8e1;
+        border: 2px solid #ffcc00;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .success-icon {
+        font-size: 70px;
+        color: #28a745;
+        animation: pop 0.6s ease-out;
+    }
+
+    @keyframes pop {
+        0% {
+            transform: scale(0);
+        }
+        80% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-view {
+        margin-top: 20px;
+        background-color: #b30000;
+        color: white;
+        font-weight: bold;
+        border-radius: 25px;
+        padding: 12px 25px;
+        transition: background 0.3s ease;
+    }
+
+    .btn-view:hover {
+        background-color: #8a0000;
+    }
+</style>
+
+<div class="payment-success-container">
+    <div class="success-icon">✅</div>
+    <h2 style="color: #b30000;">Payment Successful</h2>
+    <p class="lead">Thank you! You now have access to suggestions.</p>
+    <a href="{% url 'suggestions' %}" class="btn btn-view">🎉 View Suggestions</a>
+</div>
+{% endblock %}

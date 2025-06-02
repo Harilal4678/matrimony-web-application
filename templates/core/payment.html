@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+{% block title %}Upgrade to Premium{% endblock %}
+
+{% block content %}
+<style>
+  .upgrade-container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: linear-gradient(135deg, #fff5ec, #fff);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideFade 0.7s ease-in-out;
+  }
+
+  .upgrade-container h2 {
+    font-size: 2.8rem;
+    color: #b30000;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 1px 1px 1px #ffd700;
+  }
+
+  .upgrade-container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .btn-premium {
+    background: linear-gradient(to right, #ffd700, #ff8c00);
+    color: #fff;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .btn-premium:hover {
+    background: linear-gradient(to right, #ffcc00, #e67300);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  }
+
+  @keyframes slideFade {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .premium-badge {
+    font-size: 60px;
+    color: #ffd700;
+    margin-bottom: 10px;
+    animation: glow 2s infinite ease-in-out;
+  }
+
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 10px #ffcc00; }
+    50% { text-shadow: 0 0 20px #ff9900; }
+  }
+</style>
+
+<div class="upgrade-container">
+  <div class="premium-badge">💎</div>
+  <h2>Upgrade to Premium</h2>
+  <p>Access exclusive partner suggestions tailored to your preferences for just <strong>₹199</strong>.</p>
+  <form action="{% url 'create_checkout_session' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn-premium">Pay Now with Stripe</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'core/base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+  .home-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease;
+  }
+
+  .home-title {
+    font-size: 2.5rem;
+    color: #b30000;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 1px #ffd700;
+    text-align: center;
+  }
+
+  .home-description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+  }
+
+  .home-links {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .home-links li {
+    margin: 15px 0;
+  }
+
+  .home-links a {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .home-links a:hover {
+    background: linear-gradient(135deg, #ffcc00, #e67300);
+    transform: scale(1.05);
+  }
+
+  .premium-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: #b30000;
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .premium-btn:hover {
+    background: #8a0000;
+    transform: scale(1.05);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<div class="home-container">
+  <h2 class="home-title">Welcome to Your Matrimonial Journey!</h2>
+  <!-- <p class="home-description">Start by setting up your profile and preferences to find the perfect match for you. Let's get started!</p> -->
+
+  <ul class="home-links">
+    <li><a href="{% url 'profile_setup' %}">Set Up Your Profile</a></li>
+    <li><a href="{% url 'preference_setup' %}">Set Your Preferences</a></li>
+    <li><a href="{% url 'search_profiles' %}">Search Profiles</a></li>
+    <li><a href="{% url 'suggestions' %}">View Suggestions</a></li>
+  </ul>
+
+  
+
+
+  <a href="{% url 'payment_page' %}" class="premium-btn">Go Premium</a>
+</div>
+
+{% endblock %}

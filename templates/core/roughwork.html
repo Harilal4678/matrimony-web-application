@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Techgeum | SAP Services</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #1d4ed8;
+    }
+
+    .logos, .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .logos img, .gallery img {
+      height: 80px;
+      object-fit: contain;
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .gallery img {
+      height: 180px;
+      width: 280px;
+      object-fit: cover;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 50px 20px;
+      background: #1e40af;
+      color: white;
+      border-radius: 12px;
+      margin-top: 60px;
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: white;
+      color: #1e40af;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #dbeafe;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Techgeum's SAP Services</h1>
+    <p>Empowering enterprises with intelligent SAP solutions that drive growth, efficiency, and digital transformation.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">What is SAP & Why It Matters</h2>
+    <p class="description">
+      SAP (Systems, Applications, and Products in Data Processing) is the world's leading enterprise resource planning (ERP) software. It helps businesses of all sizes streamline operations, improve data management, and gain real-time insights for better decision-making. At <strong>Techgeum</strong>, we specialize in delivering comprehensive SAP solutions — from implementation and integration to support and optimization — tailored to your unique industry and operational needs.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>End-to-End SAP Implementation</h3>
+        <p>We design, implement, and deploy full SAP landscapes — customized to your business processes and goals.</p>
+      </div>
+      <div class="card">
+        <h3>SAP Migration & Upgrades</h3>
+        <p>Seamless migration to SAP S/4HANA or cloud solutions, with minimal disruption and maximum ROI.</p>
+      </div>
+      <div class="card">
+        <h3>Support & Maintenance</h3>
+        <p>24/7 support, monitoring, and system health checks to ensure your SAP environment performs at its best.</p>
+      </div>
+      <div class="card">
+        <h3>Custom SAP Modules</h3>
+        <p>Development of bespoke SAP modules tailored to your HR, Finance, Supply Chain, or CRM needs.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">SAP Technologies We Work With</h2>
+    <div class="logos">
+      <img src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg" alt="SAP Logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/SAP_HANA_logo.svg/512px-SAP_HANA_logo.svg.png" alt="SAP HANA">
+      <img src="https://logos-world.net/wp-content/uploads/2021/02/SAP-Fiori-Logo.png" alt="SAP Fiori" style="height:70px;">
+      <img src="https://www.icaew.com/-/media/images/logos/software-partner/sap.ashx" alt="SAP Partner">
+    </div>
+
+    <h2 class="section-title">Gallery & Success Stories</h2>
+    <div class="gallery">
+      <img src="https://www.sap.com/dam/application/shared/photos/people/teams/sap-team-collaboration.jpg" alt="SAP Team">
+      <img src="https://www.sap.com/dam/application/shared/photos/people/technology/sap-data-center.jpg" alt="SAP Data Center">
+      <img src="https://www.sap.com/dam/application/shared/photos/people/office/sap-office-2.jpg" alt="SAP Office">
+    </div>
+
+    <div class="cta">
+      <h2>Let’s Build Your SAP Future</h2>
+      <p>Contact Techgeum today to learn how we can transform your business using SAP technologies.</p>
+      <a href="/contact">Get in Touch</a>
+    </div>
+  </section>
+
+</body>
+</html>

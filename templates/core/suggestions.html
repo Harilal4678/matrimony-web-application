@@ -1,0 +1,132 @@
+{% extends 'core/base.html' %}
+{% block title %}Suggested Matches{% endblock %}
+
+{% block content %}
+<style>
+  .suggested-container {
+    padding: 30px;
+    background: #fffefc;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  .match-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #b30000;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 1px 1px 2px gold;
+  }
+
+  .profile-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .profile-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-img {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 3px solid #ffd700;
+  }
+
+  .profile-details {
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .profile-details strong {
+    font-size: 1.2rem;
+    color: #b30000;
+  }
+
+  .view-btn {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 10px 16px;
+    background: #b30000;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+
+  .view-btn:hover {
+    background: #8a0000;
+  }
+
+  .match-score {
+    margin-top: 8px;
+    font-weight: bold;
+    color: #28a745;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .no-suggestions {
+    text-align: center;
+    color: #999;
+    font-size: 1.2rem;
+    padding: 40px 20px;
+  }
+</style>
+
+<div class="suggested-container">
+  <h2 class="match-title">✨ Suggested Matches for You ✨</h2>
+
+  {% if error %}
+    <p class="no-suggestions">{{ error }}</p>
+
+  {% elif suggested_profiles %}
+    {% for entry in suggested_profiles %}
+      {% with profile=entry.profile %}
+        <div class="profile-card">
+          <img src="{{ profile.profile_image.url }}" alt="Profile Image" class="profile-img" />
+          <div class="profile-details">
+            <strong>{{ profile.user.username }}</strong><br>
+            Age: {{ profile.age }}<br>
+            Gender: {{ profile.gender }}<br>
+            Religion: {{ profile.religion }}<br>
+            Location: {{ profile.location }}<br>
+            Profession: {{ profile.profession }}<br>
+            <div class="match-score">{{ entry.match_score }} preferences matched: {{ entry.matched_fields|join:", " }}</div>
+
+            <a href="{% url 'profile_detail' profile.user_id %}" class="view-btn">View Profile</a>
+
+            {% if user.userprofile.is_paid %}
+              <a href="{% url 'chat' profile.user.username %}" class="view-btn">Chat</a>
+            {% else %}
+              <a href="{% url 'payment_page' %}" class="view-btn">Unlock Chat</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endwith %}
+    {% endfor %}
+  {% else %}
+    <div class="no-suggestions">No suggestions found based on your preferences. Try updating your profile or preferences.</div>
+  {% endif %}
+</div>
+{% endblock %}
